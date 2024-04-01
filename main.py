@@ -1,15 +1,24 @@
+"""
+This module defines a FastAPI application.
+"""
+
 from fastapi import FastAPI
-from uvicorn import run
 
 from server.weather import weather
 
 app = FastAPI()
 
-@app.get('/')
+
+@app.get("/")
 async def home():
-    return 'Hello World'
+    """
+    A simple endpoint that returns a greeting message.
+    """
+    return "Hello World"
+
 
 app.include_router(weather)
 
-if __name__ == '__main__':
-    run(app, host='127.0.0.1', port=8000)
+# if __name__ == '__main__':
+# from uvicorn import run
+#   run(app, host='0.0.0.0', port=8000)
